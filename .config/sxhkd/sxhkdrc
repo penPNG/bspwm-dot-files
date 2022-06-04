@@ -1,0 +1,41 @@
+# Spawn Terminal
+alt + Return
+	urxvt
+
+# Make sxhkd reload config file
+alt + Escape
+	pkill -USR1 -x sxhkd
+
+# for dmenu
+alt + p
+	dmenu_run
+
+# quit/restart bspwm
+shift + alt + {q,r}
+	bspc {quit,wm -r}
+
+# restart x
+shift + alt x
+	xrdb ~/.Xresources
+
+# Manuever windows
+alt + Tab
+	bspc node -f last
+
+# Move between desktops
+alt + shift + {1-9}
+	bspc node -d '^{1-9}' --follow
+alt + {1-9}
+	bspc desktop -f '^{1-9}'
+
+# Close and kill
+alt + {_,shift +}c
+	bspc node -{c,k}
+
+# Preselect the Direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# Change window state
+alt + {t,shift + t,s,f}
+	bspc node -t {tiled,psuedo_tiled,floating,fullscreen}

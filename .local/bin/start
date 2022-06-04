@@ -1,0 +1,14 @@
+#!/usr/bin/zsh
+session=start
+window=${session}:0
+pane=${window}.1
+tmux new-session -d -s${session}
+tmux splitw -v 
+tmux splitw -hf 'xplr'
+tmux selectp -L
+tmux resizep -x 40%
+tmux selectp -D
+tmux resizep -x 40% 
+tmux selectp -R
+tmux send-keys -t "$pane" C-z "tty-clock -txcD -C 5" Enter
+tmux attach-session -d
